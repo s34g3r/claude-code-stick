@@ -44,6 +44,16 @@ enum CharacterState : uint8_t {
   CHAR_WORKING_OVERHEATED,
   CHAR_WORKING_CONFUSED,
   CHAR_STATIC_BASE,
+  // 2026-05-31 added from clawd-tank: 6 catalog states. crab_walking /
+  // grooving / hat_mishap are wired into the idle mood pool; the other 3
+  // (eureka / idle_low_battery / working_pushing) are catalog-only — no
+  // automatic trigger yet, available for future PersonaState mapping.
+  CHAR_EUREKA,
+  CHAR_GROOVING,
+  CHAR_HAT_MISHAP,
+  CHAR_IDLE_LOW_BATTERY,
+  CHAR_WORKING_PUSHING,
+  CHAR_CRAB_WALKING,
   CHAR_STATE_COUNT
 };
 

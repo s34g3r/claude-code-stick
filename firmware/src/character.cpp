@@ -13,6 +13,9 @@ static const char* STATE_NAMES[CHAR_STATE_COUNT] = {
   "working_building", "working_conducting", "working_wizard",
   "working_beacon", "working_sweeping", "working_juggling",
   "working_overheated", "working_confused", "static_base",
+  // 2026-05-31 added (order must match enum in character.h)
+  "eureka", "grooving", "hat_mishap", "idle_low_battery",
+  "working_pushing", "crab_walking",
 };
 
 const char* characterStateName(CharacterState s) {
@@ -207,10 +210,18 @@ static const _Mood _MOODS[] = {
   { CHAR_WORKING_JUGGLING, "*juggle*"},
   { CHAR_STATIC_BASE,      "..."     },
   { CHAR_GOING_AWAY,       "brb"     },
+  // 2026-05-31 added: whimsical decorative bursts from clawd-tank
+  { CHAR_CRAB_WALKING,     "*scuttle*"},
+  { CHAR_GROOVING,         "*groove*" },
+  { CHAR_HAT_MISHAP,       "oof!"     },
 };
 static const uint8_t _MOOD_COUNT = sizeof(_MOODS) / sizeof(_Mood);
 
-static constexpr uint32_t MOOD_DURATION_MS    = 5000;
+// 2026-05-31: bumped from 5000 to 8000 so long narrative GIFs (hat_mishap is
+// 6.4s single-play, would otherwise get cut mid-story) finish, and 1.4-1.6s
+// loop GIFs (sweep / going_away) get ~5 cycles instead of 3 — less "cut short"
+// feel. Interval span unchanged → effective burst-to-burst gap 16-23s.
+static constexpr uint32_t MOOD_DURATION_MS    = 8000;
 static constexpr uint32_t MOOD_MIN_INTERVAL_MS = 8000;
 static constexpr uint32_t MOOD_MAX_INTERVAL_MS = 15000;
 
