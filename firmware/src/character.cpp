@@ -14,8 +14,7 @@ static const char* STATE_NAMES[CHAR_STATE_COUNT] = {
   "working_beacon", "working_sweeping", "working_juggling",
   "working_overheated", "working_confused", "static_base",
   // 2026-05-31 added (order must match enum in character.h)
-  "eureka", "grooving", "hat_mishap", "idle_low_battery",
-  "working_pushing", "crab_walking",
+  "grooving", "hat_mishap", "working_pushing", "crab_walking",
 };
 
 const char* characterStateName(CharacterState s) {

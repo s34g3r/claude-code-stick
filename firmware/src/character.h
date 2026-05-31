@@ -44,14 +44,15 @@ enum CharacterState : uint8_t {
   CHAR_WORKING_OVERHEATED,
   CHAR_WORKING_CONFUSED,
   CHAR_STATIC_BASE,
-  // 2026-05-31 added from clawd-tank: 6 catalog states. crab_walking /
-  // grooving / hat_mishap are wired into the idle mood pool; the other 3
-  // (eureka / idle_low_battery / working_pushing) are catalog-only — no
-  // automatic trigger yet, available for future PersonaState mapping.
-  CHAR_EUREKA,
+  // 2026-05-31 added from clawd-tank: 4 catalog states. crab_walking /
+  // grooving / hat_mishap wired into the mood pool; working_pushing is
+  // catalog-only (no automatic trigger).
+  // EUREKA + IDLE_LOW_BATTERY were attempted but removed — bridge.py's
+  // authoritative char_state push (auto-decay to "idle", post-approve
+  // "happy") overrides Echo's local PersonaState within 1-2 frames, so
+  // these states never visibly stuck. See STATUS.md 2026-05-31 evening.
   CHAR_GROOVING,
   CHAR_HAT_MISHAP,
-  CHAR_IDLE_LOW_BATTERY,
   CHAR_WORKING_PUSHING,
   CHAR_CRAB_WALKING,
   CHAR_STATE_COUNT
